@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from .. import models, schemas
-from fastapi import HTTPException,Response, status
+from fastapi import HTTPException, Response, status
 
 def get_all(db: Session):
      blogs = db.query(models.Blog).all()
@@ -16,7 +16,7 @@ def get_one(id: int, response: Response, db: Session):
     return blog
 
 def create(request: schemas.Blog, db: Session):
-     new_blog = models.Blog(title=request.title, content=request.content, published=request.published, user_id=2)
+     new_blog = models.Blog(title=request.title, content=request.content, published=request.published, user_id=5)
      db.add(new_blog)
      db.commit()
      db.refresh(new_blog)
